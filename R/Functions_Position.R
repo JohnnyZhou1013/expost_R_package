@@ -1,9 +1,10 @@
-#' Set problem
+#' Set the problem
 #'
-#' @param data 1
-#' @param N 1
-#' @param short_sell 1
-#' @param tcr 1
+#' Obtain the optimal strategy for a stock within a single day retrospectively
+#' @param data A trading-level dataset should include the following columns: “time,” which represents the trade time of a transaction (in seconds); “price,” which indicates the transaction price; and “volume,” which denotes the transaction volume.
+#' @param N The maximum number of shares to hold.
+#' @param short_sell represents whether short selling is allowed.
+#' @param tcr Commissions can be expressed as a percentage, such as 0.05.
 #' @return The final data and minimum value
 #' @export
 set.problem <- function(data, N, short_sell = FALSE, tcr = 0){
@@ -24,15 +25,15 @@ set.problem <- function(data, N, short_sell = FALSE, tcr = 0){
   return(problem)
 }
 
-#' Set all constraints
+#' Constraints
 #'
-#' Description
-#' @param data 1
-#' @param N 1
-#' @param X 1
-#' @param V 1
-#' @param short_sell 1
-#' @return All constraints
+#' The constraints associated with the aforementioned optimization problem.
+#' @param data A trading-level dataset should include the following columns: “time,” which represents the trade time of a transaction (in seconds); “price,” which indicates the transaction price; and “volume,” which denotes the transaction volume.
+#' @param N The maximum number of shares to hold.
+#' @param X The trade volume in our strategies at price P.
+#' @param V The actual trade volume corresponding to the price P.
+#' @param short_sell represents whether short selling is allowed.
+#' @return All the constraints
 #' @export
 set.constraints <- function(data, N, X, V, short_sell = short_sell){
   # Set Constraints
@@ -64,12 +65,12 @@ set.constraints <- function(data, N, X, V, short_sell = short_sell){
 
 #' Position limits and Short-Selling constraints
 #'
-#' Description
-#' @param constraints 1
-#' @param times 1
-#' @param prices 1
-#' @param N 1
-#' @param X 1
+#' In each period, our position cannot exceed the maximum position size N.
+#' @param constraints constraints
+#' @param times times
+#' @param prices prices
+#' @param N The maximum number of shares to hold.
+#' @param X The trade volume in our strategies at price P.
 #' @return constraint1
 #' @export
 set.constraint1 <- function(constraints, times, prices, N, X){
@@ -101,9 +102,9 @@ set.constraint1 <- function(constraints, times, prices, N, X){
 
 #' Zero-Position Assumption
 #'
-#' Description
-#' @param constraints 1
-#' @param X 1
+#' After the conclusion of a trading period, we should not hold any non-zero position.
+#' @param constraints constraints
+#' @param X The trade volume in our strategies at price P.
 #' @return constraint2
 #' @export
 set.constraint2 <- function(constraints, X){
@@ -115,10 +116,10 @@ set.constraint2 <- function(constraints, X){
 
 #' Market Liquidity Assumption
 #'
-#' Description
-#' @param constraints 1
-#' @param X 1
-#' @param V 1
+#' At any given moment and price, regardless of whether we are buying or selling, the absolute value of our trade volume should not exceed the actual trading volume at that moment and price.
+#' @param constraints constraints
+#' @param X The trade volume in our strategies at price P.
+#' @param V The actual trade volume corresponding to the price P.
 #' @return constraint3
 #' @export
 set.constraint3 <- function(constraints, X, V){
@@ -130,12 +131,12 @@ set.constraint3 <- function(constraints, X, V){
 
 #' Modified constraint for constraint1.
 #'
-#' Description
-#' @param constraints 1
-#' @param times 1
-#' @param prices 1
-#' @param N 1
-#' @param X 1
+#' Remove the short-selling constraint, i.e., allowing negative positions.
+#' @param constraints constraints
+#' @param times times
+#' @param prices prices
+#' @param N The maximum number of shares to hold.
+#' @param X The trade volume in our strategies at price P.
 #' @return constraint4
 #' @export
 set.constraint4 <- function(constraints, times, prices, N, X){

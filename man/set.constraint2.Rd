@@ -7,13 +7,13 @@
 set.constraint2(constraints, X)
 }
 \arguments{
-\item{constraints}{1}
+\item{constraints}{constraints}
 
-\item{X}{1}
+\item{X}{The trade volume in our strategies at price P.}
 }
 \value{
 constraint2
 }
 \description{
-Description
+After the conclusion of a trading period, we should not hold any non-zero position.
 }

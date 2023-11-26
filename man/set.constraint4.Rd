@@ -7,19 +7,19 @@
 set.constraint4(constraints, times, prices, N, X)
 }
 \arguments{
-\item{constraints}{1}
+\item{constraints}{constraints}
 
-\item{times}{1}
+\item{times}{times}
 
-\item{prices}{1}
+\item{prices}{prices}
 
-\item{N}{1}
+\item{N}{The maximum number of shares to hold.}
 
-\item{X}{1}
+\item{X}{The trade volume in our strategies at price P.}
 }
 \value{
 constraint4
 }
 \description{
-Description
+Remove the short-selling constraint, i.e., allowing negative positions.
 }

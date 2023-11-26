@@ -7,15 +7,15 @@
 set.constraint3(constraints, X, V)
 }
 \arguments{
-\item{constraints}{1}
+\item{constraints}{constraints}
 
-\item{X}{1}
+\item{X}{The trade volume in our strategies at price P.}
 
-\item{V}{1}
+\item{V}{The actual trade volume corresponding to the price P.}
 }
 \value{
 constraint3
 }
 \description{
-Description
+At any given moment and price, regardless of whether we are buying or selling, the absolute value of our trade volume should not exceed the actual trading volume at that moment and price.
 }

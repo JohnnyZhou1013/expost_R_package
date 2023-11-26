@@ -2,22 +2,22 @@
 % Please edit documentation in R/Functions_Position.R
 \name{set.problem}
 \alias{set.problem}
-\title{Set problem}
+\title{Set the problem}
 \usage{
 set.problem(data, N, short_sell = FALSE, tcr = 0)
 }
 \arguments{
-\item{data}{1}
+\item{data}{A trading-level dataset should include the following columns: “time,” which represents the trade time of a transaction (in seconds); “price,” which indicates the transaction price; and “volume,” which denotes the transaction volume.}
 
-\item{N}{1}
+\item{N}{The maximum number of shares to hold.}
 
-\item{short_sell}{1}
+\item{short_sell}{represents whether short selling is allowed.}
 
-\item{tcr}{1}
+\item{tcr}{Commissions can be expressed as a percentage, such as 0.05.}
 }
 \value{
 The final data and minimum value
 }
 \description{
-Set problem
+Obtain the optimal strategy for a stock within a single day retrospectively
 }

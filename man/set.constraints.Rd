@@ -2,24 +2,24 @@
 % Please edit documentation in R/Functions_Position.R
 \name{set.constraints}
 \alias{set.constraints}
-\title{Set all constraints}
+\title{Constraints}
 \usage{
 set.constraints(data, N, X, V, short_sell = short_sell)
 }
 \arguments{
-\item{data}{1}
+\item{data}{A trading-level dataset should include the following columns: “time,” which represents the trade time of a transaction (in seconds); “price,” which indicates the transaction price; and “volume,” which denotes the transaction volume.}
 
-\item{N}{1}
+\item{N}{The maximum number of shares to hold.}
 
-\item{X}{1}
+\item{X}{The trade volume in our strategies at price P.}
 
-\item{V}{1}
+\item{V}{The actual trade volume corresponding to the price P.}
 
-\item{short_sell}{1}
+\item{short_sell}{represents whether short selling is allowed.}
 }
 \value{
-All constraints
+All the constraints
 }
 \description{
-Description
+The constraints associated with the aforementioned optimization problem.
 }
